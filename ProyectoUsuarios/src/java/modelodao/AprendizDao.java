@@ -5,61 +5,65 @@
 package modelodao;
 
 import config.Conexion;
-import interfaz.MePrograma;
+import interfaz.MeAprendiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelo.Programa;
+import modelo.Aprendiz;
 
 /**
  *
- * @author APRENDIZ
+ * @author OSCAR
  */
-public class ProgramaDao implements MePrograma{
+public class AprendizDao implements MeAprendiz {
     
-    
-    
-
-    Conexion cn = new Conexion();
-    Connection con;
+    Conexion co = new Conexion();
+    Connection cn;
     PreparedStatement ps;
-    ResultSet rs;
-    
     
 
     @Override
-    public Programa listar(int id) {
+    public Aprendiz listar(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List listadoPro() {
+    public List listadoAp() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean registrapro(Programa pro) {
-        String sql = "insert into programa(codpro,nombrepro)values('"+pro.getCodpro()+"','"+pro.getNompro()+"')";
+    public boolean registrarAp(Aprendiz apre) {
+        
+        String sql = "insert into aprendiz(documentoA,nombreA,apellidoA,emailA,telefonoA)values('"+apre.getDocumentoA()+"','"+apre.getNombreA()+
+                "','"+apre.getApellidoA()+"','"+apre.getEmailA()+"','"+apre.getTelefonoA()+"')";
+        
+        
         try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
+            cn = co.getConnection();
+            ps = cn.prepareStatement(sql);
             ps.executeUpdate();
-             JOptionPane.showMessageDialog(null,"Programa registrado");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Programa no registrado");
+            JOptionPane.showMessageDialog(null,"Aprendiz registrado");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Aprendiz no registrado");
         }
+        
+        
         return false;
+        
     }
 
     @Override
-    public boolean actualizarpro(Programa pro) {
+    public boolean actualizarAp(Aprendiz apre) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean eliminarpro(int id) {
+    public boolean eliminarAp(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

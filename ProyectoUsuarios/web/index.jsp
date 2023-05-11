@@ -16,35 +16,35 @@
     </head>
     <body>
 
-        <form action="ControladorAprendiz">
+        <form action="controladorAprendiz">
             <h1>SISTEMA DE REGISTRO</h1>
             <div class="campo">
             <label for="documento">numero de documento: </label>
-            <input type="text" id="documento" name="documento">
+            <input type="text" id="documento" name="txtDocumento">
             </div>
              <div class="campo">
             <label for="nombre">Nombre: </label>
-            <input type="text" id="nombre" name="nombre">
+            <input type="text" id="nombre" name="txtNombre">
             </div>
             <div class="campo">
              <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido">
+            <input type="text" id="apellido" name="txtApellido">
             </div>
   
            
             <div class="campo">
              <label for="email">Correo electronico: </label>
-            <input type="text" id="email" name="email">
+            <input type="email" id="email" name="txtEmail">
             </div>
             <div class="campo">
              <label for="telefono">Telefono: </label>
-            <input type="text" id="telefono" name="telefono">
+            <input type="number" id="telefono" name="txtTelefono">
             
             </div>
             
             <div id="registrar">
             
-            <input id="boton" type="submit" name="accion" value="registrar">
+            <input id="boton" type="submit" name="accion" value="registrarA">
             
             </div>
             

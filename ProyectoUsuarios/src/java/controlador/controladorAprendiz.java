@@ -12,22 +12,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Programa;
-import modelodao.ProgramaDao;
+import modelo.Aprendiz;
+import modelodao.AprendizDao;
 
 /**
  *
- * @author APRENDIZ
+ * @author OSCAR
  */
-@WebServlet(name = "controladorPrograma", urlPatterns = {"/controladorPrograma"})
-public class controladorPrograma extends HttpServlet {
+@WebServlet(name = "controladorAprendiz", urlPatterns = {"/controladorAprendiz"})
+public class controladorAprendiz extends HttpServlet {
     
+    String listarapre = "view/LAprendiz.jsp";
+    String agregarapre = "index.jsp";
     
-    String agregarpro = "view/FPrograma.jsp";
-    String listarpro = "view/Listarpro.jsp";
-    
-    Programa pro=  new Programa();
-    ProgramaDao prodao = new ProgramaDao();
+    Aprendiz apre = new Aprendiz();
+    AprendizDao apredao = new AprendizDao();
     
 
     /**
@@ -42,15 +41,15 @@ public class controladorPrograma extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet controladorPrograma</title>");            
+            out.println("<title>Servlet controladorAprendiz</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet controladorPrograma at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet controladorAprendiz at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -68,24 +67,32 @@ public class controladorPrograma extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String acceso = "";
         String action = request.getParameter("accion");
-        if(action.equalsIgnoreCase("agregarpro")){
-            acceso = agregarpro;
-        } if(action.equalsIgnoreCase("listarpro")){
-            acceso = listarpro;
-        }  if(action.equalsIgnoreCase("AgregarP")){
-            int codpro = Integer.parseInt(request.getParameter("codigoPro"));
-            String nombrepro = request.getParameter("nombrePro");
-            pro.setCodpro(codpro);
-            pro.setNompro(nombrepro);
-            prodao.registrapro(pro);
-       
-            
-        }
-        
-        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        if(action.equalsIgnoreCase("listarapre")){
+            acceso = listarapre;
+        } if(action.equalsIgnoreCase("agregarapre")){
+                acceso = agregarapre;
+        } if(action.equalsIgnoreCase("registrarA")){
+                int documento = Integer.parseInt(request.getParameter("txtDocumento"));
+                String nombre = request.getParameter("txtNombre");
+                String apellido = request.getParameter("txtApellido");
+                String email = request.getParameter("txtEmail");
+                int telefono = Integer.parseInt(request.getParameter("txtTelefono"));
+                
+                apre.setDocumentoA(documento);
+                apre.setNombreA(nombre);
+                apre.setApellidoA(apellido);
+                apre.setEmailA(email);
+                apre.setTelefonoA(telefono);
+                apredao.registrarAp(apre);
+              
+             
+        }  
+         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
+        
     }
 
     /**

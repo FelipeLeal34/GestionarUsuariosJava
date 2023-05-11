@@ -11,30 +11,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario programa</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css crossorigin="anonymous"">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
    
     </head>
     <body>
-        <h1>Registro de programa</h1>
-         <div class="contenedor">
+       
+         
         
-        <div class="col-lg-6">
             <form action="../controladorPrograma">
-                <h2>Codigo del programa: </h2><br>
-                <input type="number" class="form-control" name="codigoPro">
-                <h2>nombre del programa: </h2><br>
-                <input type="text" class="form-control" name="nombrePro"><br>
+                 <h1>Registro de programa</h1>
+                <div>
+                <label for="codigoPro">Codigo del programa: </label>
+                <input type="number" name="codigoPro" id="codigoPro">
+                </div>
+                <div>
+                <label for="nombrePro">nombre del programa: </label>
+                <input type="text" name="nombrePro id="nombrePro"">
+                </div>
                 
-                
-                <input type="submit" id="id" name="accion" value="AgregarP">
-                
+                 <div>
+                <input type="submit" name="accion" value="AgregarP">
+                </div>
                 
                 
             </form>
             
             
            
-        </div>
-    </div>
+       
         
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" i
     </body>

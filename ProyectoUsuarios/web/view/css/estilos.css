@@ -20,13 +20,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 			color: #fff;
 			background:#b15984;
 			border:3px solid #fff;
-			width:30%;
+			width:auto;
 			
-			height: 500px;
+			height: auto;
 			border-radius: 20px;
 			padding: 20px;
-			margin-left: 30%;
-			margin-top: 10%;
+			margin-left: 50%;
+			margin-top: 50%;
+                        transform: translate(-50%,-100%);
 			box-sizing: border-box;
 			font-size: 20px;
                         
@@ -61,8 +62,6 @@ text-align: center;
                     
                 }
                 
-                #registrar{
-                    text-align: center;
-                }
+               
 
 
