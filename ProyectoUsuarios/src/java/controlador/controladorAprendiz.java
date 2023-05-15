@@ -114,13 +114,13 @@ public class controladorAprendiz extends HttpServlet {
            
         } else if(action.equalsIgnoreCase("actualizar")){
             
-            int id = Integer.parseInt(request.getParameter("txtId"));
+       
             int documento = Integer.parseInt(request.getParameter("txtDocumento"));
                 String nombre = request.getParameter("txtNombre");
                 String apellido = request.getParameter("txtApellido");
                 String email = request.getParameter("txtEmail");
                 int telefono = Integer.parseInt(request.getParameter("txtTelefono"));
-                
+                apre.setIdA(id);
                 apre.setDocumentoA(documento);
                 apre.setNombreA(nombre);
                 apre.setApellidoA(apellido);

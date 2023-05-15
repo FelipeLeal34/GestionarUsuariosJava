@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+         <link href="view/css/estilos.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
    
@@ -30,10 +30,7 @@
                  
                  
                  %>
-                 <div class="campo">
-            <label for="id">Id: </label>
-            <input type="text" id="id" name="txtId" disabled="true" value="<%=ap.getIdA()%>">
-            </div>
+                
                 <div class="campo">
             <label for="documento">numero de documento: </label>
             <input type="text" id="documento" name="txtDocumento" value="<%=ap.getDocumentoA()%>">
@@ -47,7 +44,6 @@
             <input type="text" id="apellido" name="txtApellido" value="<%=ap.getApellidoA()%>">
             </div>
   
-           
             <div class="campo">
              <label for="email">Correo electronico: </label>
             <input type="email" id="email" name="txtEmail" value="<%=ap.getEmailA()%>">

@@ -42,7 +42,6 @@ public class ProgramaDao implements MePrograma{
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Programa pro = new Programa();
                 pro.setCodpro(rs.getInt("codpro"));
                 pro.setNompro(rs.getString("nombrepro"));
             }
