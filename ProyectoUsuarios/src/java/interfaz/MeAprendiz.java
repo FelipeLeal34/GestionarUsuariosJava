@@ -15,6 +15,6 @@ public interface MeAprendiz{
     public Aprendiz listar(int id);
     public List listadoAp();
     public boolean registrarAp(Aprendiz apre);
-    public boolean actualizarAp(int id);
+    public boolean actualizarAp(Aprendiz ap);
     public boolean eliminarAp(int id);
 }

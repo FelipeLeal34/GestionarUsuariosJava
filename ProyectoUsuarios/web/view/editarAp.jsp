@@ -4,6 +4,8 @@
     Author     : APRENDIZ
 --%>
 
+<%@page import="modelo.Aprendiz"%>
+<%@page import="modelodao.AprendizDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,33 +20,41 @@
            
         
            
-            <form action="action">
+            <form action="controladorAprendiz">
                  <h1>SISTEMA DE EDICIÓN DE USUARIO</h1>
+                 <%
+                 AprendizDao apredao = new AprendizDao();
+                 Aprendiz ap = new Aprendiz();
+                 int id = Integer.parseInt((String)request.getAttribute("idA"));
+                 ap = apredao.listar(id);
+                 
+                 
+                 %>
                  <div class="campo">
             <label for="id">Id: </label>
-            <input type="text" id="id" name="txtId" disabled="true">
+            <input type="text" id="id" name="txtId" disabled="true" value="<%=ap.getIdA()%>">
             </div>
                 <div class="campo">
             <label for="documento">numero de documento: </label>
-            <input type="text" id="documento" name="txtDocumento">
+            <input type="text" id="documento" name="txtDocumento" value="<%=ap.getDocumentoA()%>">
             </div>
              <div class="campo">
             <label for="nombre">Nombre: </label>
-            <input type="text" id="nombre" name="txtNombre">
+            <input type="text" id="nombre" name="txtNombre" value="<%=ap.getNombreA()%>">
             </div>
             <div class="campo">
              <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="txtApellido">
+            <input type="text" id="apellido" name="txtApellido" value="<%=ap.getApellidoA()%>">
             </div>
   
            
             <div class="campo">
              <label for="email">Correo electronico: </label>
-            <input type="email" id="email" name="txtEmail">
+            <input type="email" id="email" name="txtEmail" value="<%=ap.getEmailA()%>">
             </div>
             <div class="campo">
              <label for="telefono">Telefono: </label>
-            <input type="number" id="telefono" name="txtTelefono">
+            <input type="number" id="telefono" name="txtTelefono" value="<%=ap.getTelefonoA()%>">
             
             </div>
             

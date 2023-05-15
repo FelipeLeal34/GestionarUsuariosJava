@@ -24,7 +24,8 @@ public class controladorPrograma extends HttpServlet {
     
     
     String agregarpro = "view/FPrograma.jsp";
-    String listarpro = "view/Listarpro.jsp";
+    String listarpro = "view/ListaPro.jsp";
+    String editarpro = "view/editarPro.jsp";
     
     Programa pro=  new Programa();
     ProgramaDao prodao = new ProgramaDao();
@@ -80,12 +81,27 @@ public class controladorPrograma extends HttpServlet {
             pro.setCodpro(codpro);
             pro.setNompro(nombrepro);
             prodao.registrapro(pro);
+            acceso = listarpro;
        
-            RequestDispatcher vista = request.getRequestDispatcher(acceso);
-        vista.forward(request, response);
+  
+        } if(action.equalsIgnoreCase("eliminar")){
+            int codpro = Integer.parseInt(request.getParameter("codpro"));
+            pro.setCodpro(codpro);
+            prodao.eliminarpro(codpro);
+            acceso = listarpro;
+            
+        }
+        
+        if(action.equalsIgnoreCase("editar")){
+          request.setAttribute("codpro", request.getParameter("codpro"));
+            acceso = editarpro;
+            
         }
         
         
+        
+        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        vista.forward(request, response);
     }
 
     /**

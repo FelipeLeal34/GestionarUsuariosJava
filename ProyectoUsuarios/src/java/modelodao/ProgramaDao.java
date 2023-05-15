@@ -30,12 +30,27 @@ public class ProgramaDao implements MePrograma{
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
+    Programa pro = new Programa();
     
     
 
     @Override
-    public Programa listar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Programa listar(int codpro) {
+      String sql = "select * from programa where codpro="+codpro;
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Programa pro = new Programa();
+                pro.setCodpro(rs.getInt("codpro"));
+                pro.setNompro(rs.getString("nombrepro"));
+            }
+        } catch (Exception e) {
+        }
+      
+      return pro;
+    
     }
 
     @Override
@@ -80,8 +95,17 @@ public class ProgramaDao implements MePrograma{
     }
 
     @Override
-    public boolean eliminarpro(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean eliminarpro(int codpro) {
+        String sql = "delete from programa where codpro="+codpro;
+        try {
+              con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+             JOptionPane.showMessageDialog(null,"Programa eliminado");
+        } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,"Programa no eliminado");
+        }
+        return false;
     }
     
 }

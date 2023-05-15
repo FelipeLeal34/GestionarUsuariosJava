@@ -12,9 +12,9 @@ import modelo.Programa;
  * @author APRENDIZ
  */
 public interface MePrograma {
-    public Programa listar(int id);
+    public Programa listar(int codpro);
     public List listadoPro();
     public boolean registrapro(Programa pro);
     public boolean actualizarpro(Programa pro);
-    public boolean eliminarpro(int id);
+    public boolean eliminarpro(int codpro);
 }

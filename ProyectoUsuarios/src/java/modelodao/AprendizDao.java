@@ -35,7 +35,23 @@ public class AprendizDao implements MeAprendiz {
 
     @Override
     public Aprendiz listar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       String sql = "select * from aprendiz where idA="+id;
+        try {
+            cn = co.getConnection();
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+               while(rs.next()){
+               
+                ap.setIdA(rs.getInt("idA"));
+                ap.setDocumentoA(rs.getInt("documentoA"));
+                ap.setNombreA(rs.getString("nombreA"));
+                ap.setApellidoA(rs.getString("apellidoA"));
+                ap.setEmailA(rs.getString("emailA"));
+                ap.setTelefonoA(rs.getInt("telefonoA"));
+               }
+        } catch (Exception e) {
+        }
+        return ap;
     }
 
     @Override
@@ -89,26 +105,33 @@ public class AprendizDao implements MeAprendiz {
     }
 
     @Override
-    public boolean actualizarAp(int id) {
-     String sql = "update aprendriz set documentoA='"+ap.getDocumentoA()+"',nombreA='"+ap.getNombreA()+"',apellidoA='"+ap.getApellidoA()+"',emailA=´"+ap.getEmailA()+
+    public boolean actualizarAp(Aprendiz ap) {
+     String sql = "update aprendiz set documentoA='"+ap.getDocumentoA()+"',nombreA='"+ap.getNombreA()+"',apellidoA='"+ap.getApellidoA()+"',emailA=´"+ap.getEmailA()+
              "'telefonoA='"+ap.getTelefonoA()+"' where idA = "+ap.getIdA();
      try {
-            cn = co.getConnection();
+         
+                cn = co.getConnection();
             ps = cn.prepareStatement(sql);
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Aprendiz actualizado");
+                
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Aprendiz no actualizado");
         }
         return false;
     }
 
     @Override
     public boolean eliminarAp(int id) {
-       String sql = "delete from aprendiz where id = "+id;
+       String sql = "delete from aprendiz where idA = "+id;
         try {
             cn = co.getConnection();
             ps = cn.prepareStatement(sql);
             ps.executeUpdate();
+             JOptionPane.showMessageDialog(null,"Aprendiz eliminado");
+            
         } catch (Exception e) {
+                      JOptionPane.showMessageDialog(null,"Aprendiz no eliminado");
         }
         return false;
     }

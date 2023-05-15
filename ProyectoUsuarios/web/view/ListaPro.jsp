@@ -51,8 +51,9 @@
                         <td class="btn"><%=pro.getNompro()%></td>
                          
                         <td>
-                            <a href="">editar</a>
-                            <a href="">eliminar</a>
+                            <a href="../controladorPrograma?accion=editar&codpro=<%=pro.getCodpro()%>">editar</a>
+                            <a href="../controladorPrograma?accion=eliminar&codpro=<%=pro.getCodpro()%>">eliminar</a>
+                       
                         </td>
                             
                             
