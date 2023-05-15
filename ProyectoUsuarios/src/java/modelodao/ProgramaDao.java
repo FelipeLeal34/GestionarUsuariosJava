@@ -9,7 +9,11 @@ import interfaz.MePrograma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Programa;
 
@@ -36,7 +40,24 @@ public class ProgramaDao implements MePrograma{
 
     @Override
     public List listadoPro() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Programa> lista = new ArrayList<>();
+        String sql = "select * from programa";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Programa pro = new Programa();
+                pro.setCodpro(rs.getInt("codpro"));
+                pro.setNompro(rs.getString("nombrepro"));
+                lista.add(pro);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProgramaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
     }
 
     @Override

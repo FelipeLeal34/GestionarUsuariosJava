@@ -26,7 +26,7 @@
                 </div>
                 <div>
                 <label for="nombrePro">nombre del programa: </label>
-                <input type="text" name="nombrePro id="nombrePro"">
+                <input type="text" name="nombrePro" id="nombrePro"">
                 </div>
                 
                  <div>

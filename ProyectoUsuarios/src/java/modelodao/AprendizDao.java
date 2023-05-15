@@ -27,6 +27,7 @@ public class AprendizDao implements MeAprendiz {
     Connection cn;
     PreparedStatement ps;
     ResultSet rs;
+    Aprendiz ap = new Aprendiz();
     
 
     @Override
@@ -86,12 +87,27 @@ public class AprendizDao implements MeAprendiz {
 
     @Override
     public boolean actualizarAp(Aprendiz apre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     String sql = "update aprendriz set documentoA='"+ap.getDocumentoA()+"',nombreA='"+ap.getNombreA()+"',apellidoA='"+ap.getApellidoA()+"',emailA=´"+ap.getEmailA()+
+             "'telefonoA='"+ap.getTelefonoA()+"' where idA = "+ap.getIdA();
+     try {
+            cn = co.getConnection();
+            ps = cn.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
 
     @Override
     public boolean eliminarAp(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       String sql = "delete * from aprendiz where id = "+id;
+        try {
+            cn = co.getConnection();
+            ps = cn.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
     
 }
