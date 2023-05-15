@@ -24,6 +24,7 @@ public class controladorAprendiz extends HttpServlet {
     
     String listarapre = "view/ListaAp.jsp";
     String agregarapre = "index.jsp";
+    String editarapre = "view/editarAp.jsp";
     
     Aprendiz apre = new Aprendiz();
     AprendizDao apredao = new AprendizDao();
@@ -88,19 +89,30 @@ public class controladorAprendiz extends HttpServlet {
                 apre.setEmailA(email);
                 apre.setTelefonoA(telefono);
                 apredao.registrarAp(apre);
+                acceso = listarapre;
               
              
         }  
         
         else if(action.equalsIgnoreCase("eliminar")){
-            id = Integer.parseInt(request.getParameter("idA"));
+           int id = Integer.parseInt(request.getParameter("idA"));
+            
             apre.setIdA(id);
             apredao.eliminarAp(id);
             acceso=listarapre;
             
+
+       
         }
         
-         RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        else if(action.equalsIgnoreCase("editar")){
+            acceso = editarapre;
+           
+        }
+        
+
+        
+                                  RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
         
     }

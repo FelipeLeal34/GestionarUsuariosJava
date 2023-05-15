@@ -81,11 +81,11 @@ public class controladorPrograma extends HttpServlet {
             pro.setNompro(nombrepro);
             prodao.registrapro(pro);
        
-            
+            RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        vista.forward(request, response);
         }
         
-        RequestDispatcher vista = request.getRequestDispatcher(acceso);
-        vista.forward(request, response);
+        
     }
 
     /**

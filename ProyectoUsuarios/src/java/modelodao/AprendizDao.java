@@ -9,7 +9,10 @@ import interfaz.MeAprendiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -86,7 +89,7 @@ public class AprendizDao implements MeAprendiz {
     }
 
     @Override
-    public boolean actualizarAp(Aprendiz apre) {
+    public boolean actualizarAp(int id) {
      String sql = "update aprendriz set documentoA='"+ap.getDocumentoA()+"',nombreA='"+ap.getNombreA()+"',apellidoA='"+ap.getApellidoA()+"',emailA=´"+ap.getEmailA()+
              "'telefonoA='"+ap.getTelefonoA()+"' where idA = "+ap.getIdA();
      try {
@@ -100,7 +103,7 @@ public class AprendizDao implements MeAprendiz {
 
     @Override
     public boolean eliminarAp(int id) {
-       String sql = "delete * from aprendiz where id = "+id;
+       String sql = "delete from aprendiz where id = "+id;
         try {
             cn = co.getConnection();
             ps = cn.prepareStatement(sql);

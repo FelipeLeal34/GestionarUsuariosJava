@@ -58,8 +58,8 @@
                         <td><%=ap.getTelefonoA()%></td>
                          
                         <td class="botones">
-                            <a href="">editar</a>
-                            <a href="../controladorAprendiz?accion=eliminar&idA="<%=ap.getIdA()%>>eliminar</a>
+                            <a href="../controladorAprendiz?accion=editar&idA=<%=ap.getIdA()%>">editar</a>
+                            <a href="../controladorAprendiz?accion=eliminar&idA=<%=ap.getIdA()%>">eliminar</a>
                         </td>
                             
                             
