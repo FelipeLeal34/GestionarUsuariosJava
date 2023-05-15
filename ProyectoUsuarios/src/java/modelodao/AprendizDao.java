@@ -8,7 +8,9 @@ import config.Conexion;
 import interfaz.MeAprendiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +26,7 @@ public class AprendizDao implements MeAprendiz {
     Conexion co = new Conexion();
     Connection cn;
     PreparedStatement ps;
+    ResultSet rs;
     
 
     @Override
@@ -33,7 +36,31 @@ public class AprendizDao implements MeAprendiz {
 
     @Override
     public List listadoAp() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Aprendiz> lista = new ArrayList<>();
+        String sql = "select * from aprendiz";
+        try {
+            cn = co.getConnection();
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Aprendiz usu = new Aprendiz();
+                usu.setIdA(rs.getInt("idA"));
+                usu.setDocumentoA(rs.getInt("documentoA"));
+                usu.setNombreA(rs.getString("nombreA"));
+                usu.setApellidoA(rs.getString("apellidoA"));
+                usu.setEmailA(rs.getString("emailA"));
+                usu.setTelefonoA(rs.getInt("telefonoA"));
+                lista.add(usu);
+                
+                
+                
+                
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null,"Lista no mostrada: "+e.getMessage());
+        }
+       
+        return lista;
     }
 
     @Override
@@ -49,7 +76,7 @@ public class AprendizDao implements MeAprendiz {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,"Aprendiz registrado");
         } catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Aprendiz no registrado");
+            JOptionPane.showMessageDialog(null,"Aprendiz no registrado: "+e.getMessage());
         }
         
         

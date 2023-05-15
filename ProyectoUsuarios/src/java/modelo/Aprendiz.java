@@ -6,7 +6,7 @@ package modelo;
 
 
 public class Aprendiz {
-    int documentoA, telefonoA;
+    int idA, documentoA, telefonoA;
     String nombreA, apellidoA, emailA;
 
     public int getDocumentoA() {
@@ -48,6 +48,16 @@ public class Aprendiz {
     public void setEmailA(String emailA) {
         this.emailA = emailA;
     }
+
+    public int getIdA() {
+        return idA;
+    }
+
+    public void setIdA(int idA) {
+        this.idA = idA;
+    }
+    
+    
     
     
     
