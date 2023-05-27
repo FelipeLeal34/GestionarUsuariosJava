@@ -23,7 +23,7 @@ import modelodao.AprendizDao;
 public class controladorAprendiz extends HttpServlet {
     
     String listarapre = "view/ListaAp.jsp";
-    String agregarapre = "index.jsp";
+    String agregarapre = "view/FAprendiz.jsp";
     String editarapre = "view/editarAp.jsp";
     
     Aprendiz apre = new Aprendiz();
@@ -72,11 +72,12 @@ public class controladorAprendiz extends HttpServlet {
         
         String acceso = "";
         String action = request.getParameter("accion");
-        if(action.equalsIgnoreCase("listarapre")){
+        if(action.equalsIgnoreCase("listar")){
+            
             acceso = listarapre;
-        } else if(action.equalsIgnoreCase("agregarapre")){
+        } else if(action.equalsIgnoreCase("agregar")){
                 acceso = agregarapre;
-        } else if(action.equalsIgnoreCase("registrarA")){
+        } else if(action.equalsIgnoreCase("registrar")){
                 int documento = Integer.parseInt(request.getParameter("txtDocumento"));
                 String nombre = request.getParameter("txtNombre");
                 String apellido = request.getParameter("txtApellido");

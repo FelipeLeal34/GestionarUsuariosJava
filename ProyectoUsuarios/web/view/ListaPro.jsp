@@ -15,6 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="css/lista.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/lista.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div>
@@ -51,8 +52,8 @@
                         <td class="btn"><%=pro.getNompro()%></td>
                          
                         <td>
-                            <a href="../controladorPrograma?accion=editar&codpro=<%=pro.getCodpro()%>">editar</a>
-                            <a href="../controladorPrograma?accion=eliminar&codpro=<%=pro.getCodpro()%>">eliminar</a>
+                            <a href="controladorPrograma?accion=editar&codpro=<%=pro.getCodpro()%>">editar</a>
+                            <a href="controladorPrograma?accion=eliminar&codpro=<%=pro.getCodpro()%>">eliminar</a>
                        
                         </td>
                             

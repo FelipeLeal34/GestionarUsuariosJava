@@ -28,6 +28,7 @@ public class controladorFicha extends HttpServlet {
         
         String listaFi = "view/ListaFi.jsp";
         String editarFi = "view/editarFi.jsp";
+        String agregarFi = "view/FFicha.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -69,7 +70,15 @@ public class controladorFicha extends HttpServlet {
         String acceso = "";
         
         String action = request.getParameter("accion");
+        
+        if(action.equalsIgnoreCase("listar")){
+                acceso=listaFi;
+            }
+        
         if(action.equalsIgnoreCase("agregar")){
+                acceso=agregarFi;
+            }
+        if(action.equalsIgnoreCase("registrar")){
             int codficha = Integer.parseInt(request.getParameter("txtCodFicha"));
        
             int cantapre = Integer.parseInt(request.getParameter("txtCantApre"));

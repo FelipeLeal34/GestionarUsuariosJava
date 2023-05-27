@@ -12,6 +12,7 @@
         <title>Formulario programa</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css crossorigin="anonymous"">
         <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/estilos.css" rel="stylesheet" type="text/css"/>
    
     </head>
     <body>
@@ -29,8 +30,9 @@
                 <input type="text" name="nombrePro" id="nombrePro"">
                 </div>
                 
-                 <div>
-                <input type="submit" name="accion" value="AgregarP">
+                 <div id="botones">
+                <input type="submit" name="accion" value="registrar">
+                <a href="controladorPrograma?accion=listar">Listar Programas</a>
                 </div>
                 
                 

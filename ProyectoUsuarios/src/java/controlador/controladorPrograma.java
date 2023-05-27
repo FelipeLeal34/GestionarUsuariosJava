@@ -71,11 +71,11 @@ public class controladorPrograma extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
-        if(action.equalsIgnoreCase("agregarpro")){
+        if(action.equalsIgnoreCase("agregar")){
             acceso = agregarpro;
-        } else if(action.equalsIgnoreCase("listarpro")){
+        } else if(action.equalsIgnoreCase("listar")){
             acceso = listarpro;
-        } else  if(action.equalsIgnoreCase("AgregarP")){
+        } else  if(action.equalsIgnoreCase("registrar")){
             int codpro = Integer.parseInt(request.getParameter("codigoPro"));
             String nombrepro = request.getParameter("nombrePro");
             pro.setCodpro(codpro);

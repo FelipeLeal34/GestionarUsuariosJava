@@ -18,7 +18,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="css/lista.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/lista.css" rel="stylesheet" type="text/css"/>
+  
     </head>
     <body>
         
@@ -39,7 +40,13 @@
         
         <div>
             <form action="controladorAprendizFicha">
+                 <div id="ficha"><label for="codficha">Aprendices de la ficha:  </label>
+                <input id="codficha" name="txtCodficha" value="<%=apficha.getCodficha()%>" readonly></div>
+                
+                <div id="selectt">
+                
                 <details>
+                
                 <summary for="idAp">Agregar aprendices:  </summary>
                 <select id="idAp" name="txtIdap" multiple>
                     <option value="0"></option>
@@ -60,11 +67,11 @@
                     %>
                 </select>
                 </details>
+                </div>
                 
                 
-                <<label for="codficha">Aprendices de la ficha:  </label>
-                <input id="codficha" name="txtCodficha" value="<%=apficha.getCodficha()%>" readonly>
-                <input type="submit" name="accion" value="agregar">
+               
+                <input type="submit" name="accion" id="agregar" value="agregar">
             </form>
             
             
@@ -95,6 +102,7 @@
                         <td><%=it.getApellidoA()%></td>
                         <td><%=it.getEmailA()%></td>
                         <td><%=it.getTelefonoA()%></td>
+                       
                     </tr>
                         
                    <% }

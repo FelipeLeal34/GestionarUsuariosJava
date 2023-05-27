@@ -92,6 +92,10 @@ public class controladorAprendizFicha extends HttpServlet {
            acceso = listaApficha;
         }
         
+       
+        
+        
+        
         
         
           RequestDispatcher vista = request.getRequestDispatcher(acceso);

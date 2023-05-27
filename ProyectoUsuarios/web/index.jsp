@@ -1,53 +1,27 @@
 <%-- 
     Document   : index
-    Created on : 24/04/2023, 8:55:47 p. m.
+    Created on : 26/05/2023, 6:50:42 p. m.
     Author     : APRENDIZ
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <head>
-        <title>Start Page</title>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="view/css/estilos.css"/>
-
-        
+        <title>JSP Page</title>
+        <link href="view/css/index.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
-        <form action="controladorAprendiz">
-            <h1>SISTEMA DE REGISTRO</h1>
-            <div class="campo">
-            <label for="documento">numero de documento: </label>
-            <input type="text" id="documento" name="txtDocumento">
-            </div>
-             <div class="campo">
-            <label for="nombre">Nombre: </label>
-            <input type="text" id="nombre" name="txtNombre">
-            </div>
-            <div class="campo">
-             <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="txtApellido">
-            </div>
-  
-           
-            <div class="campo">
-             <label for="email">Correo electronico: </label>
-            <input type="email" id="email" name="txtEmail">
-            </div>
-            <div class="campo">
-             <label for="telefono">Telefono: </label>
-            <input type="number" id="telefono" name="txtTelefono">
+        <div id="index">
+            <h1>Bienvenido al sistema</h1>
+            <div id="botones">
+            
+            <a href="controladorAprendiz?accion=agregar">Aprendiz</a>
+            <a href="controladorPrograma?accion=agregar">Programa</a>
+            <a href="controladorFicha?accion=agregar">Ficha</a>
             
             </div>
-            
-            <div id="registrar">
-            
-            <input id="boton" type="submit" name="accion" value="registrarA">
-            
-            </div>
-            
-        </form>
+        </div>
     </body>
 </html>

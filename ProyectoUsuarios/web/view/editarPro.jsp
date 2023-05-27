@@ -16,7 +16,7 @@
     </head>
     <body>
         <form action="controladorPrograma">
-                 <h1>Registro de programa</h1>
+                 <h1>Edicion de programa</h1>
                 <%Programa pro = new Programa();
                 ProgramaDao prodao = new ProgramaDao();
                 int codpro = Integer.parseInt((String)request.getAttribute("codpro"));
@@ -34,8 +34,9 @@
                 <input type="text" name="nombrepro" id="nombrePro"" value="<%=pro.getNompro()%>">
                 </div>
                 
-                 <div>
+                <div id="botones">
                 <input type="submit" name="accion" value="actualizar">
+                <a href="controladorPrograma?accion=listar">Listar Programas</a>
                 </div>
                 
                 

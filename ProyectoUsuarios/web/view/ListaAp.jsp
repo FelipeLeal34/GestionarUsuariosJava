@@ -15,6 +15,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="css/lista.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/lista.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <div>
@@ -58,8 +60,8 @@
                         <td><%=ap.getTelefonoA()%></td>
                          
                         <td class="botones">
-                            <a href="../controladorAprendiz?accion=editar&idA=<%=ap.getIdA()%>">editar</a>
-                            <a href="../controladorAprendiz?accion=eliminar&idA=<%=ap.getIdA()%>">eliminar</a>
+                            <a href="controladorAprendiz?accion=editar&idA=<%=ap.getIdA()%>">editar</a>
+                            <a href="controladorAprendiz?accion=eliminar&idA=<%=ap.getIdA()%>">eliminar</a>
                         </td>
                             
                             

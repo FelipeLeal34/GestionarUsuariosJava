@@ -62,6 +62,7 @@
             <div id="registrar">
             
             <input id="boton" type="submit" name="accion" value="actualizar">
+            <a href="controladorAprendiz?accion=listar">Listar </a>
             </form>
         
         </div>

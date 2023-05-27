@@ -16,6 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="css/lista.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/lista.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         
@@ -51,9 +52,9 @@
             <td><%=ficha.getCodpro()%></td>
            
             <td>
-                <a href="../controladorAprendizFicha?accion=listar&codficha=<%=ficha.getCodficha()%>">mostrar aprendices</a>
-                <a href="../controladorFicha?accion=editar&codficha=<%=ficha.getCodficha()%>">editar</a>
-                <a href="../controladorFicha?accion=eliminar&codficha=<%=ficha.getCodficha()%>">eliminar</a>
+                <a href="controladorAprendizFicha?accion=listar&codficha=<%=ficha.getCodficha()%>">mostrar aprendices</a>
+                <a href="controladorFicha?accion=editar&codficha=<%=ficha.getCodficha()%>">editar</a>
+                <a href="controladorFicha?accion=eliminar&codficha=<%=ficha.getCodficha()%>">eliminar</a>
                 
             </td>
             

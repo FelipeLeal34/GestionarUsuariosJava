@@ -15,7 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <form action="controladorFicha">
@@ -69,6 +69,7 @@
             <div>
             
             <input type="submit" name="accion" value="actualizar">
+            <a href="controladorFicha?accion=listar">Listar Fichas</a>
             
             </div>
                 

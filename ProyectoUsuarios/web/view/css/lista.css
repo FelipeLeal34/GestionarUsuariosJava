@@ -44,3 +44,32 @@ a{
     display:flex;
     
 }
+
+details{
+    background: #ff9900;
+    border-radius: 10px;
+}
+
+input{
+    border: none;
+}
+
+#agregar{
+    background: #ff9900;
+    padding:5px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+#ficha{
+    font-size: 30px;
+}
+
+#selectt{
+    display: inline-flex;
+}
+
+option{
+    background: #ff9900;
+    color:#fff;
+}
