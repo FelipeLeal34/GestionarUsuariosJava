@@ -12,7 +12,7 @@ import modelo.Ficha;
  * @author APRENDIZ
  */
 public interface MeFicha {
-    public boolean registrarFicha();
+    public boolean registrarFicha(Ficha ficha);
     public List listarFichas();
     public Ficha listarFicha(int codficha);
     public boolean actualizarFicha(Ficha ficha);
