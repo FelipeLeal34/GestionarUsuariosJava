@@ -1,0 +1,46 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 4/05/2023, 7:31:19 p. m.
+    Author     : APRENDIZ
+*/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div{
+    margin-top: 10%;
+    margin-left: 30%;
+    color: #000;
+    
+}
+
+th, td{
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+      padding: 5px;
+    color:#fff;
+    background: orange;
+    margin-right: 2px;
+    cursor:pointer;
+    border-radius: 5lpx;
+    
+    
+    
+}
+
+.btn{
+  
+}
+
+.botones{
+    display:flex;
+    
+}

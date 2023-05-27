@@ -90,7 +90,16 @@ public class ProgramaDao implements MePrograma{
 
     @Override
     public boolean actualizarpro(Programa pro) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       String sql = "update programa set nombrepro='"+pro.getNompro()+"' where codpro = "+pro.getCodpro();
+       try{
+             con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Programa actualizado");
+       }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Programa no actualizado");
+       }
+       return false;
     }
 
     @Override
@@ -101,8 +110,8 @@ public class ProgramaDao implements MePrograma{
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
              JOptionPane.showMessageDialog(null,"Programa eliminado");
-        } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null,"Programa no eliminado");
+        } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null,"Programa no eliminado"+e);
         }
         return false;
     }

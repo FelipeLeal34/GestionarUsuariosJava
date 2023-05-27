@@ -1,0 +1,71 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 17/04/2023, 9:18:53 p. m.
+    Author     : APRENDIZ
+*/
+
+	*{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			 background: #483357;
+			 font-family: arial;
+		}
+
+
+		form{
+			color: #fff;
+			background:#b15984;
+			border:3px solid #fff;
+			width:auto;
+			
+			height: auto;
+			border-radius: 20px;
+			padding: 20px;
+			margin-left: 50%;
+			margin-top: 50%;
+                        transform: translate(-50%,-100%);
+			box-sizing: border-box;
+			font-size: 20px;
+                        
+
+		}
+                
+                select{
+                    color:#fff;
+                }
+
+		form h1{
+text-align: center;
+
+		}
+
+		form div{
+			padding: 20px;
+			background:#b15984;
+		}
+
+		input{
+			border-radius:5px;
+			padding: 5px;
+			border: 1px solid #fff;
+			float: right;
+		}
+
+		label,input{
+			background:#b15984;
+		}
+                
+                #boton{
+                    color:#fff;
+                    padding:10px;
+                    cursor:pointer
+                    
+                }
+                
+               
+
+

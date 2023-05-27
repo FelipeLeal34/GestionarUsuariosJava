@@ -116,11 +116,12 @@ public class controladorAprendiz extends HttpServlet {
             
        
             int documento = Integer.parseInt(request.getParameter("txtDocumento"));
+            int idA = Integer.parseInt(request.getParameter("txtIdA"));
                 String nombre = request.getParameter("txtNombre");
                 String apellido = request.getParameter("txtApellido");
                 String email = request.getParameter("txtEmail");
                 int telefono = Integer.parseInt(request.getParameter("txtTelefono"));
-                apre.setIdA(id);
+                apre.setIdA(idA);
                 apre.setDocumentoA(documento);
                 apre.setNombreA(nombre);
                 apre.setApellidoA(apellido);

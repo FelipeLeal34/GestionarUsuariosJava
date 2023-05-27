@@ -12,22 +12,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Ficha;
-import modelodao.FichaDao;
+import modelo.AprendizFicha;
+import modelodao.AprendizFichaDao;
 
 /**
  *
  * @author APRENDIZ
  */
-@WebServlet(name = "controladorFicha", urlPatterns = {"/controladorFicha"})
-public class controladorFicha extends HttpServlet {
-
+@WebServlet(name = "controladorAprendizFicha", urlPatterns = {"/controladorAprendizFicha"})
+public class controladorAprendizFicha extends HttpServlet {
     
-        Ficha ficha = new Ficha();
-        FichaDao fichadao = new FichaDao();
-        
-        String listaFi = "view/ListaFi.jsp";
-        String editarFi = "view/editarFi.jsp";
+    AprendizFicha apficha = new AprendizFicha();
+    AprendizFichaDao apfichadao = new AprendizFichaDao();
+    String acceso = "";
+    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,10 +44,10 @@ public class controladorFicha extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet controladorFicha</title>");            
+            out.println("<title>Servlet controladorAprendizFicha</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet controladorFicha at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet controladorAprendizFicha at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,66 +65,37 @@ public class controladorFicha extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String acceso = "";
         
+        AprendizFicha Apficha = new AprendizFicha();
+        
+        
+        String listaApficha = "view/ListaFiAp.jsp";
         String action = request.getParameter("accion");
+        if(action.equalsIgnoreCase("listar")){
+            acceso = listaApficha;
+            request.setAttribute("codficha",request.getParameter("codficha"));
+            
+        }
+        
         if(action.equalsIgnoreCase("agregar")){
-            int codficha = Integer.parseInt(request.getParameter("txtCodFicha"));
-       
-            int cantapre = Integer.parseInt(request.getParameter("txtCantApre"));
-            int codpro = Integer.parseInt(request.getParameter("txtCodpro"));
-            String[] aprendicesFicha = request.getParameterValues("txtIdap");
-            int[] aprendicesFichaint = new int[aprendicesFicha.length];
-            
+           int codficha = Integer.parseInt(request.getParameter("txtCodficha"));
+           String[] aprendicesNuevos = request.getParameterValues("txtIdap");
+           int[] aprendicesNuevosint = new int[aprendicesNuevos.length];
+           for(int i = 0 ; i < aprendicesNuevos.length; i++){
+               aprendicesNuevosint[i] = Integer.parseInt(aprendicesNuevos[i]);
+           }
            
-            for(int i = 0; i < aprendicesFicha.length; i++){
-                aprendicesFichaint[i] = Integer.parseInt(aprendicesFicha[i]);
-            }
-            
-            
-            ficha.setCodpro(codpro);
-            ficha.setCodficha(codficha);
-            ficha.setCantapre(cantapre);
-            ficha.setIdA(aprendicesFichaint);
-            fichadao.registrarFicha(ficha);
-            
-            
-            acceso=listaFi;
-            
-                   
-        }
-        
-        else if(action.equalsIgnoreCase("editar")){
-            request.setAttribute("codficha", request.getParameter("codficha"));
-            acceso = editarFi;
-        }
-        
-        else if(action.equalsIgnoreCase("eliminar")){
-            int codficha = Integer.parseInt(request.getParameter("codficha") );
-            ficha.setCodficha(codficha);
-            fichadao.eliminarFicha(codficha);
-            acceso = listaFi;
-        }
-        
-        else if(action.equalsIgnoreCase("actualizar")){
-            int codficha = Integer.parseInt(request.getParameter("txtCodficha") );
-            int cantapre = Integer.parseInt(request.getParameter("txtCantapre"));
-            int codpro = Integer.parseInt(request.getParameter("txtCodpro"));
-            ficha.setCodficha(codficha);
-            ficha.setCantapre(cantapre);
-            ficha.setCodpro(codpro);
-            fichadao.actualizarFicha(ficha);
-            
-            acceso = listaFi;
+           apficha.setIdA(aprendicesNuevosint);
+           apficha.setCodficha(codficha);
+           apfichadao.registrarAprendizFicha(apficha);
+           request.setAttribute("codficha",request.getParameter("txtCodficha"));
+           acceso = listaApficha;
         }
         
         
         
-        
-        
-         RequestDispatcher vista = request.getRequestDispatcher(acceso);
+          RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
-        
     }
 
     /**

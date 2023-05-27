@@ -9,8 +9,9 @@ package modelo;
  * @author APRENDIZ
  */
 public class Ficha {
-    int codficha,cantapre,codpro,idf;
+    int codficha,cantapre,codpro;
     int[] idA;
+    String nombrepro;
 
     public int getCodficha() {
         return codficha;
@@ -44,13 +45,14 @@ public class Ficha {
         this.idA = idA;
     }
 
-    public int getIdf() {
-        return idf;
+    public String getNombrepro() {
+        return nombrepro;
     }
 
-    public void setIdf(int idf) {
-        this.idf = idf;
+    public void setNombrepro(String nombrepro) {
+        this.nombrepro = nombrepro;
     }
+
     
     
     

@@ -73,9 +73,9 @@ public class controladorPrograma extends HttpServlet {
         String action = request.getParameter("accion");
         if(action.equalsIgnoreCase("agregarpro")){
             acceso = agregarpro;
-        } if(action.equalsIgnoreCase("listarpro")){
+        } else if(action.equalsIgnoreCase("listarpro")){
             acceso = listarpro;
-        }  if(action.equalsIgnoreCase("AgregarP")){
+        } else  if(action.equalsIgnoreCase("AgregarP")){
             int codpro = Integer.parseInt(request.getParameter("codigoPro"));
             String nombrepro = request.getParameter("nombrePro");
             pro.setCodpro(codpro);
@@ -84,7 +84,7 @@ public class controladorPrograma extends HttpServlet {
             acceso = listarpro;
        
   
-        } if(action.equalsIgnoreCase("eliminar")){
+        } else if(action.equalsIgnoreCase("eliminar")){
             int codpro = Integer.parseInt(request.getParameter("codpro"));
             pro.setCodpro(codpro);
             prodao.eliminarpro(codpro);
@@ -92,9 +92,20 @@ public class controladorPrograma extends HttpServlet {
             
         }
         
-        if(action.equalsIgnoreCase("editar")){
+        else if(action.equalsIgnoreCase("editar")){
           request.setAttribute("codpro", request.getParameter("codpro"));
             acceso = editarpro;
+            
+        }
+        
+         if(action.equalsIgnoreCase("actualizar")){
+          int codpro = Integer.parseInt(request.getParameter("codpro"));
+           String nombrepro = request.getParameter("nombrepro");
+           pro.setCodpro(codpro);
+           pro.setNompro(nombrepro);
+           prodao.actualizarpro(pro);
+           acceso = listarpro;
+           
             
         }
         

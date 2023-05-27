@@ -19,4 +19,5 @@ public interface MeFicha {
     public boolean eliminarFicha(int codficha);
     
     
+    
 }

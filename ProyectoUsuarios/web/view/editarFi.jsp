@@ -1,14 +1,13 @@
 <%-- 
-    Document   : FLibro
-    Created on : 15/05/2023, 6:34:19 p. m.
-    Author     : APRENDIZ
+    Document   : editarFi
+    Created on : 26/05/2023, 1:35:28 a. m.
+    Author     : OSCAR
 --%>
 
-<%@page import="modelo.Aprendiz"%>
-<%@page import="modelo.Aprendiz"%>
-<%@page import="modelodao.AprendizDao"%>
-<%@page import="modelo.Programa"%>
+<%@page import="modelodao.FichaDao"%>
+<%@page import="modelo.Ficha"%>
 <%@page import="java.util.List"%>
+<%@page import="modelo.Programa"%>
 <%@page import="modelodao.ProgramaDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,24 +18,31 @@
         <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form action="../controladorFicha">
-            <h1>AGREGAR FICHA</h1>
+        <form action="controladorFicha">
+            <h1>EDITAR FICHA</h1>
+            <%
+            Ficha ficha = new Ficha();
+            FichaDao fichadao = new FichaDao();
+            int codficha = Integer.parseInt((String)request.getAttribute("codficha"));
+            ficha = fichadao.listarFicha(codficha);
+            
+            %>
             <div>
                 <label for="codficha">Código de ficha: </label>
-                <input type="number" name="txtCodFicha" id="codficha">
+                <input type="number" name="txtCodficha" id="codficha" value="<%=ficha.getCodficha()%>" readonly>
                
             </div>
             
             <div>
                 <label for="cantapre">Cantidad de aprendices:  </label>
-                <input type="text" name="txtCantApre" id="cantapre">
+                <input type="text" name="txtCantapre" id="cantapre" value="<%=ficha.getCantapre()%>">
                
             </div>
             
             
              <div>
-                <label for="cantapre">Programa:  </label>
-                <select id="cantapre" name="txtCodpro">
+                <label for="codpro">Programa:  </label>
+                <select id="codpro" name="txtCodpro">
                     <option value="0"></option>
                     <% ProgramaDao prodao = new ProgramaDao() ;
                     Programa pro = new Programa();
@@ -54,35 +60,15 @@
                     %>
                     
                 </select>
-                    <details>
-                <summary for="idAp">Aprendices:  </summary>
-                <select id="idAp" name="txtIdap" multiple>
-                    <option value="0"></option>
-                    <% AprendizDao apredao = new AprendizDao() ;
-                    Aprendiz ap = new Aprendiz();
-                    List<Aprendiz> listaAp = apredao.listadoAp();
                     
-                    
-                    
-                    
-                        for(Aprendiz li:listaAp){%>
-                        <option value="<%=li.getIdA()%>"><%=li.getNombreA()+li.getApellidoA()%></option>
-                        
-                        
-                        <%
-                        }
-
-                    %>
-                    
-                </select>
-              </details>
+              
                
             </div>
             
             
             <div>
             
-            <input type="submit" name="accion" value="agregar">
+            <input type="submit" name="accion" value="actualizar">
             
             </div>
                 

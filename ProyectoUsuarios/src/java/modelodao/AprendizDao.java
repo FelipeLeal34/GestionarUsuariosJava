@@ -9,6 +9,7 @@ import interfaz.MeAprendiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 
@@ -106,8 +107,9 @@ public class AprendizDao implements MeAprendiz {
 
     @Override
     public boolean actualizarAp(Aprendiz ap) {
-     String sql = "update aprendiz set documentoA='"+ap.getDocumentoA()+"',nombreA='"+ap.getNombreA()+"',apellidoA='"+ap.getApellidoA()+"',emailA=´"+ap.getEmailA()+
-             "'telefonoA='"+ap.getTelefonoA()+"' where idA = "+ap.getIdA();
+    String sql = "update aprendiz set documentoA='"+ap.getDocumentoA()+"', nombreA='"+ap.getNombreA()+"', apellidoA='"+ap.getApellidoA()+"', emailA='"+ap.getEmailA()+
+             "', telefonoA='"+ap.getTelefonoA()+"' where idA = "+ap.getIdA();
+
      try {
          
                 cn = co.getConnection();
@@ -115,9 +117,11 @@ public class AprendizDao implements MeAprendiz {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null,"Aprendiz actualizado");
                 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Aprendiz no actualizado");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Aprendiz no actualizado"+e);
         }
+     
+     
         return false;
     }
 

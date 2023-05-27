@@ -26,27 +26,37 @@ public class FichaDao implements MeFicha {
     Connection cn;
     PreparedStatement ps;
     ResultSet rs;
+    Ficha ficha = new Ficha();
 
     @Override
     public boolean registrarFicha(Ficha ficha) {
         
         
-    
-        String sql = "insert into ficha(codficha,cantapre,codpro,idA)values(?,?,?,?)";
+        
+        String sqlficha = "insert into ficha(codficha,cantapre,codpro)values(?,?,?)";
+        String sqlaf = "insert into aprendiz_ficha(codficha,idA)values(?,?)";
+        
         try {
             cn = con.getConnection();
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1,ficha.getCodficha());
-            ps.setInt(2,ficha.getCantapre());
-            ps.setInt(3,ficha.getCodpro());
+            PreparedStatement psficha = cn.prepareStatement(sqlficha);
+            PreparedStatement psaf = cn.prepareStatement(sqlaf);
+            psficha.setInt(1,ficha.getCodficha());
+            psficha.setInt(2,ficha.getCantapre());
+            psficha.setInt(3,ficha.getCodpro());
+            psficha.executeUpdate();
+            
            
             
           
             
             for(int idAp:ficha.getIdA()){
+                
+            
+               
               
-                ps.setInt(4,idAp);
-                ps.executeUpdate();
+                psaf.setInt(1,ficha.getCodficha());
+                psaf.setInt(2,idAp);
+                psaf.executeUpdate();
             }
             
             
@@ -60,8 +70,8 @@ public class FichaDao implements MeFicha {
     @Override
     
     public List listarFichas() {
-          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-          /*
+        
+          
         ArrayList<Ficha> listaFi = new ArrayList<>();
         String sql = "select * from ficha";
         try {
@@ -73,28 +83,67 @@ public class FichaDao implements MeFicha {
                 ficha.setCodficha(rs.getInt("codficha"));
                 ficha.setCantapre(rs.getInt("cantapre"));
                 ficha.setCodpro(rs.getInt("codpro"));
-                ficha.setIdA(rs.getInt("idA"));
+                
+        
                 listaFi.add(ficha);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Fichas no mostradas");
         }
-        return listaFi;*/
+        return listaFi;
     }
 
     @Override
     public Ficha listarFicha(int codficha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "select * from ficha where codficha="+codficha;
+        try{
+        cn = con.getConnection();
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                ficha.setCodficha(rs.getInt("codficha"));
+                ficha.setCantapre(rs.getInt("cantapre"));
+                ficha.setCodpro(rs.getInt("codpro"));
+            }
+        } catch(Exception e){
+            
+        }
+        
+        return ficha;
+        
     }
 
     @Override
     public boolean actualizarFicha(Ficha ficha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      String sql = "update ficha set cantapre='"+ficha.getCantapre()+"', codpro = '"+ficha.getCodpro()+"' where codficha = "+ficha.getCodficha();
+       try {
+         
+                cn = con.getConnection();
+            ps = cn.prepareStatement(sql);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Ficha actualizado");
+                
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Ficha no actualizada"+e);
+        }
+     
+      return false;
     }
 
     @Override
     public boolean eliminarFicha(int codficha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     String sql = "delete from ficha where codficha="+codficha;
+     try{
+        cn = con.getConnection();
+            ps = cn.prepareStatement(sql);
+            ps.executeUpdate();
+    JOptionPane.showMessageDialog(null,"Ficha eliminada");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Ficha no eliminada"+e);
+        }
+     
+     return false;
     }
-    
+
+  
 }
