@@ -25,6 +25,8 @@ public class controladorFicha extends HttpServlet {
     
         Ficha ficha = new Ficha();
         FichaDao fichadao = new FichaDao();
+        String acceso = "";
+        String listaFi = "view/ListaFi.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -64,15 +66,28 @@ public class controladorFicha extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String acceso = "";
         String action = request.getParameter("accion");
         if(action.equalsIgnoreCase("agregar")){
             int codficha = Integer.parseInt(request.getParameter("txtCodFicha"));
             int cantapre = Integer.parseInt(request.getParameter("txtCantApre"));
+            int codpro = Integer.parseInt(request.getParameter("txtCodpro"));
+            String[] aprendicesFicha = request.getParameterValues("txtIdap");
+            int[] aprendicesFichaint = new int[aprendicesFicha.length];
+            
+           
+            for(int i = 0; i < aprendicesFicha.length; i++){
+                aprendicesFichaint[i] = Integer.parseInt(aprendicesFicha[i]);
+            }
+            
+            
+            ficha.setCodpro(codpro);
             ficha.setCodficha(codficha);
             ficha.setCantapre(cantapre);
+            ficha.setIdA(aprendicesFichaint);
             fichadao.registrarFicha(ficha);
             
+            
+            acceso=listaFi;
             
                    
         }

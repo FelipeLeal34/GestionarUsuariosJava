@@ -9,7 +9,8 @@ package modelo;
  * @author APRENDIZ
  */
 public class Ficha {
-    int codficha,cantapre,codpro,idA;
+    int codficha,cantapre,codpro,idf;
+    int[] idA;
 
     public int getCodficha() {
         return codficha;
@@ -35,12 +36,22 @@ public class Ficha {
         this.codpro = codpro;
     }
 
-    public int getIdA() {
+    public int[] getIdA() {
         return idA;
     }
 
-    public void setIdA(int idA) {
+    public void setIdA(int[] idA) {
         this.idA = idA;
     }
+
+    public int getIdf() {
+        return idf;
+    }
+
+    public void setIdf(int idf) {
+        this.idf = idf;
+    }
+    
+    
     
 }

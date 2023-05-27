@@ -33,6 +33,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
                         
 
 		}
+                
+                select{
+                    color:#fff;
+                }
 
 		form h1{
 text-align: center;

@@ -4,6 +4,9 @@
     Author     : APRENDIZ
 --%>
 
+<%@page import="modelo.Aprendiz"%>
+<%@page import="modelo.Aprendiz"%>
+<%@page import="modelodao.AprendizDao"%>
 <%@page import="modelo.Programa"%>
 <%@page import="java.util.List"%>
 <%@page import="modelodao.ProgramaDao"%>
@@ -30,15 +33,10 @@
                
             </div>
             
-             <div>
-                <label for="cantapre">Cantidad de aprendices:  </label>
-                <input type="text" name="txtCantApre" id="cantapre">
-               
-            </div>
             
              <div>
-                <label for="codpro">Cantidad de aprendices:  </label>
-                <select id="codpro" name="listapro">
+                <label for="cantapre">Programa:  </label>
+                <select id="cantapre" name="txtCodpro">
                     <option value="0"></option>
                     <% ProgramaDao prodao = new ProgramaDao() ;
                     Programa pro = new Programa();
@@ -56,6 +54,25 @@
                     %>
                     
                 </select>
+                    
+                <label for="idAp">Aprendices:  </label>
+                <select id="idAp" name="txtIdap" multiple>
+                    <option value="0"></option>
+                    <% AprendizDao apredao = new AprendizDao() ;
+                    Aprendiz ap = new Aprendiz();
+                    List<Aprendiz> listaAp = apredao.listadoAp();
+                    
+                    
+                    
+                    
+                        for(Aprendiz li:listaAp){%>
+                        <option value="<%=li.getIdA()%>"><%=li.getNombreA()+li.getApellidoA()%></option>
+                        
+                        
+                        <%
+                        }
+
+                    %>
               
                
             </div>
@@ -63,7 +80,7 @@
             
             <div>
             
-            <input type="submit" name="accion "value="agregar">
+            <input type="submit" name="accion" value="agregar">
             
             </div>
                 

@@ -29,7 +29,7 @@ public class Conexion {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con=(Connection) DriverManager.getConnection(url,user,password);
-            JOptionPane.showMessageDialog(null,"Conexion exitosa");
+          
         
         
         }catch(SQLException e)
